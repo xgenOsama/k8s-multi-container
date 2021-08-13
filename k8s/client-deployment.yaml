@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: deployment
+kind: Deployment
 metadata:
   name: client-deployment
 spec:
@@ -9,7 +9,7 @@ spec:
       component : web
   template:
     metadata:
-      label:
+      labels:
         component : web
     spec:
       containers:
