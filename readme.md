@@ -8,7 +8,6 @@ This image is a react project for presentation layer
 
 this image contains the api request
 
-
 # worker image
 
 redis image for calculating the fib value inserted in the presentation layer
@@ -18,28 +17,41 @@ redis image for calculating the fib value inserted in the presentation layer
 postgres database to store values
 
 ## Installation
-client image
+
+### client image
+
 ```bash
 docker build -t <dockerhub_username>/multi-client ./client
 docker login
 docker push <dockerhub_username>/multi-client
 ```
 
-server image
+### server image
+
 ```bash
 docker build -t <dockerhub_username>/multi-server ./server
 docker login
 docker push <dockerhub_username>/multi-server
 ```
 
-worker image
+### worker image
+
 ```bash
 docker build -t <dockerhub_username>/multi-worker ./worker
 docker login
 docker push <dockerhub_username>/multi-worker
 ```
 
-apply k8s to cluster
+### network policy
+
+```bash
+minikube start  --driver=hyperv  --network-plugin=cni --cni=calico
+minikube addons  enable ingress
+kubectl describe service -n ingress-nginx ingress-nginx-controller
+```
+
+### apply k8s to cluster
+
 ```bash
 kubectl create secret generic pgpassword --from-literal PGPASSWORD=password123
 kubectl apply -f ./k8s

@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: server-network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      component: server
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+  egress:
+  - to:
+    - podSelector:
+        matchLabels:
+          component : postgres
+    - podSelector:
+        matchLabels:
+          component : redis
+  
