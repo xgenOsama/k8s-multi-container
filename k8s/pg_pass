@@ -1,1 +1,1 @@
-kubectl create secret (generic,tls,docker-registery) <secret_name> --from-literal PGPASSWORD=password123
+kubectl create secret (generic,tls,docker-registery) <secret_name> --from-literal PGPASSWORD=password123 --namespace dev
