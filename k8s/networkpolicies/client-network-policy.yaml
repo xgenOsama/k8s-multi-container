@@ -18,3 +18,11 @@ spec:
     - podSelector:
         matchLabels:
           component: server
+  # allow DNS resolution
+  - ports:
+    - port: 53
+      protocol: UDP
+    - port: 53
+      protocol: TCP
+    - port: 5000
+      protocol: TCP

@@ -14,12 +14,17 @@ spec:
   - from:
     - ipBlock:
         cidr: 0.0.0.0/0
+  - ports:
+    - protocol: TCP
+      port: 5000
   egress:
-  - to:
-    - podSelector:
-        matchLabels:
-          component : postgres
-    - podSelector:
-        matchLabels:
-          component : redis
-  
+  # allow DNS resolution
+  - ports:
+    - port: 53
+      protocol: UDP
+    - port: 53
+      protocol: TCP
+    - port: 5432
+      protocol: TCP
+    - port: 6379
+      protocol: TCP

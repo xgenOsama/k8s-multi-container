@@ -9,9 +9,20 @@ spec:
       component: postgres
   policyTypes:
   - Ingress
+  - Egress
   ingress:
   - from:
     - podSelector:
         matchLabels:
           component: server
+  - ports:
+    - protocol: TCP
+      port: 5432
+  egress:
+  # allow DNS resolution
+  - ports:
+    - port: 53
+      protocol: UDP
+    - port: 53
+      protocol: TCP
 
