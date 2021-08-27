@@ -15,6 +15,13 @@ spec:
       containers:
         - name: worker
           image: xgenosama/test-mutli-worker
+          resources:
+            limits:
+              memory: 400Mi
+              cpu: 200m
+            requests:
+              cpu: 100m
+              memory: 200Mi
           env:
             - name: REDIS_HOST
               value: redis-cluster-ip-service

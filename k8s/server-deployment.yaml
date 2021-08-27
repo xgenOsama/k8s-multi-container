@@ -15,6 +15,13 @@ spec:
       containers:
         - name: server
           image: xgenosama/test-mutli-server
+          resources:
+            limits:
+              memory: 400Mi
+              cpu: 200m
+            requests:
+              cpu: 100m
+              memory: 200Mi
           ports:
             - containerPort: 5000
           env:

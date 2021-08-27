@@ -17,4 +17,10 @@ spec:
           image: xgenosama/multi-client
           ports:
             - containerPort: 3000
-            
+          resources:
+            limits:
+              memory: 400Mi
+              cpu: 200m
+            requests:
+              cpu: 100m
+              memory: 200Mi
